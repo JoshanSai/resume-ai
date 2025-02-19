@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FANG Companies Resume Template</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        background-color: #f4f4f4;
+      }
+      .container {
+        width: 80%;
+        max-width: 900px;
+        margin: 30px auto;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1,
+      h2,
+      h3 {
+        color: #111;
+        margin-bottom: 10px;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .header h1 {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 5px 0;
+      }
+      .header p {
+        font-size: 14px;
+        color: #666;
+      }
+      .section {
+        margin-bottom: 20px;
+      }
+      .section h2 {
+        font-size: 20px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 5px;
+      }
+      .job-title,
+      .degree {
+        font-weight: bold;
+        color: #333;
+      }
+      .company-name,
+      .school-name {
+        color: #777;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      ul {
+        list-style-type: disc;
+        padding-left: 20px;
+      }
+      ul li {
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header Section -->
+      <div class="header">
+        <h1>{{ name }}</h1>
+        <p>
+          Email: {{ email }} | Phone: {{ phone }} | LinkedIn: {{ linkedin }}
+        </p>
+      </div>
+
+      <!-- Summary Section -->
+      <div class="section">
+        <h2>Summary</h2>
+        <p>{{ summary }}</p>
+      </div>
+
+      <!-- Experience Section -->
+      <div class="section">
+        <h2>Professional Experience</h2>
+        {% for experience in experiences %}
+        <div>
+          <p class="job-title">{{ experience.job_title }}</p>
+          <p class="company-name">
+            {{ experience.company }} | {{ experience.date_range }}
+          </p>
+          <ul>
+            {% for responsibility in experience.responsibilities %}
+            <li>{{ responsibility }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Education Section -->
+      <div class="section">
+        <h2>Education</h2>
+        {% for education in education_list %}
+        <div>
+          <p class="degree">{{ education.degree }}</p>
+          <p class="school-name">
+            {{ education.school }} | {{ education.graduation_year }}
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Skills Section -->
+      <div class="section">
+        <h2>Skills</h2>
+        <ul>
+          {% for skill in skills %}
+          <li>{{ skill }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Projects Section -->
+      <div class="section">
+        <h2>Projects</h2>
+        {% for project in projects %}
+        <div>
+          <p class="job-title">{{ project.title }}</p>
+          <p>{{ project.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
